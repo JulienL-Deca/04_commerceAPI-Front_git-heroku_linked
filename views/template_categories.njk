@@ -1,0 +1,32 @@
+{% extends "layout_index.njk" %}
+
+{% block mybody %}
+<div class="container">
+  <div class="rows">
+    <div class="col-8 offset-2">
+      <table class="table table-striped table-sm">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">ID of categories</th>
+            <th scope="col">Categories</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for oneCategory in categoriesList %}
+          <tr>
+            <td>{{oneCategory.id}}</td>
+            <td><a href="/categories/{{oneCategory.id}}">{{oneCategory.label}}</a></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{# <ul>
+  {% for oneCategory in categoriesList %}
+  <li><a href="/categories/{{oneCategory.id}}">{{oneCategory.label}}</a></li>
+  {% endfor %} #}
+</ul>
