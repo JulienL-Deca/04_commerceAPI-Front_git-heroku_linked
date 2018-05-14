@@ -1,7 +1,8 @@
 const PG = require("pg");
+const connectionString = process.env.DATABASE_URL;
 
 function sendProducts(){
-  const client = new PG.Client();
+  const client = new PG.Client({connectionString: connectionString,});
   client.connect();
   return client.query("SELECT * FROM products;")
     .then(function (resultDB) {
@@ -10,7 +11,7 @@ function sendProducts(){
     });
 }
 function findProductById(productId, answer){
-  const client = new PG.Client();
+  const client = new PG.Client({connectionString: connectionString,});
   client.connect();
   return client.query("SELECT * FROM products WHERE id = $1::uuid;", [productId])
     .then(function (resultDB) {
